@@ -249,7 +249,7 @@
     
     <script>
         function copyIP() {
-            navigator.clipboard.writeText("play.atomvilla.net")
+            navigator.clipboard.writeText("avsrv.mc-world.xyz")
                 .then(() => {
                     document.getElementById("copyMessage").classList.remove("hidden");
                     setTimeout(() => {
@@ -261,7 +261,7 @@
                 });
         }
         
-        fetch("https://api.mcsrvstat.us/2/play.atomvilla.net")
+        fetch("https://api.mcsrvstat.us/2/avsrv.mc-world.xyz")
             .then(res => res.json())
             .then(data => {
                 document.getElementById("playerCount").textContent = data?.players?.online ?? 0;
