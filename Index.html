@@ -1,15 +1,274 @@
-<html>
-    <h1>
-        Hey, I'm AtomGamerzIQ
-    </h1>
-    <body>
-        <h2>About me</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomvilla - Minecraft Server</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/D27O7vN.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(2, 12, 27, 0.8)), url('https://i.imgur.com/KDksUUO.jpeg') no-repeat center center/cover;
+            color: white;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .navbar {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .navbar ul li a:hover {
+            color: #1e90ff;
+        }
+        .hero {
+            text-align: center;
+            margin-top: 120px;
+            padding: 50px 20px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        .server-info {
+            text-align: center;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .server-info p {
+            margin: 10px 0;
+        }
+        .server-info button {
+            background: #1e90ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .server-info button:hover {
+            background: #0073e6;
+        }
+        .hidden {
+            display: none;
+        }
+        .about-us {
+            text-align: center;
+            margin: 60px 20px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .about-us h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ffff, #ff00ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 5s ease infinite;
+            margin-bottom: 20px;
+        }
+        .about-us p {
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        @keyframes gradient-text {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .blog {
+            text-align: center;
+            margin: 60px 20px;
+        }
+        .blog h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .blog-post {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .blog-post img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .blog-post h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .blog-post p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+        footer {
+            text-align: center;
+            margin: 60px 0 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Navbar -->
+    <nav class="navbar">
+        <h1>Atomvilla</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#support">Support</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Welcome to Atomvilla</h1>
+        <p>A Minecraft experience like no other.</p>
+    </header>
+    
+    <!-- Server Info -->
+    <section class="server-info">
+        <p>Players Online: <span id="playerCount">Loading...</span></p>
+        <button onclick="copyIP()" aria-label="Copy server IP address">
+            <i class="fas fa-clipboard"></i> Copy IP
+        </button>
+        <p id="copyMessage" class="hidden">Copied to clipboard!</p>
+    </section>
+    
+    <!-- About Us Section -->
+    <section class="about-us" id="about">
+        <h2>About Us</h2>
         <p>
-            I am a Minecraft Enthugiast Content creator
+            Atomvilla Network is a Minecraft server dedicated to providing a highly engaging and balanced Economy Survival Multiplayer experience, where every decision you make impacts your journey. Dive into a world full of dynamic features, including jobs, in-game shops, an Auction House, and more, all designed to create a thriving in-game economy.
+            <br><br>
+            Our server offers a seamless experience where you can engage in various activities, whether it’s exploring new lands, earning through jobs, or participating in auctions. We also offer both paid and free grindable ranks, allowing players to progress at their own pace, unlocking powerful abilities and rewards as they grow within the community.
+            <br><br>
+            At Atomvilla Network, we believe in building a supportive and interactive community. Our Discord server is fully integrated, providing players with a connected support system where help is always a message away. Whether you’re in need of assistance or want to chat with fellow players, our Discord community is here to enhance your experience.
+            <br><br>
+            What makes Atomvilla unique is our focus on providing an immersive, user-centric environment with a plethora of customizable features and a community-driven economy. With easy-to-use in-game shops and a robust rank system, players have the freedom to shape their journey in countless ways.
+            <br><br>
+            Come join Atomvilla Network and be a part of a vibrant community where survival, economy, and collaboration thrive. Together, we’re building an unforgettable Minecraft experience, one block at a time.
         </p>
-        <h2>What I'm working on</h2>
-        <p>
-            I'm obsessed with Minecraft and i love making videos on it.
-        </p>
-    </body>
+    </section>
+    
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <h2>Latest Blog Posts</h2>
+        <div class="blog-post">
+            <img src="https://i.imgur.com/6KD3Utx.png" alt="Minecraft Update Screenshot">
+            <h3>New Update Released!</h3>
+            <p>Explore the latest features, including new biomes, mobs, and gameplay enhancements. Join now to experience the excitement!</p>
+        </div>
+    </section>
+    
+    <!-- Links Section -->
+    <footer>
+        <a href="https://discord.gg/zrcdyQyZS9" target="_blank" aria-label="Join our Discord">
+            <i class="fab fa-discord"></i> Discord
+        </a>
+        <a href="https://avsrv.craftingstore.net" target="_blank" aria-label="Visit our Store">
+            <i class="fas fa-store"></i> Store
+        </a>
+    </footer>
+    
+    <script>
+        function copyIP() {
+            navigator.clipboard.writeText("play.atomvilla.net")
+                .then(() => {
+                    document.getElementById("copyMessage").classList.remove("hidden");
+                    setTimeout(() => {
+                        document.getElementById("copyMessage").classList.add("hidden");
+                    }, 2000);
+                })
+                .catch(() => {
+                    alert("Failed to copy IP address. Please copy it manually.");
+                });
+        }
+        
+        fetch("https://api.mcsrvstat.us/2/play.atomvilla.net")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("playerCount").textContent = data?.players?.online ?? 0;
+            })
+            .catch(() => {
+                document.getElementById("playerCount").textContent = "Error";
+            });
+    </script>
+</body>
 </html>
