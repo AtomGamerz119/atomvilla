@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="https://i.imgur.com/D27O7vN.png">
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -52,6 +53,40 @@
         }
         .navbar ul li a:hover {
             color: #1e90ff;
+        }
+        .navbar .auth-btn {
+            background: #1e90ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .navbar .auth-btn:hover {
+            background: #0073e6;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .user-profile .initials {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #1e90ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
         .hero {
             text-align: center;
@@ -120,23 +155,17 @@
             margin: 0 auto;
             line-height: 1.8;
         }
-        @keyframes gradient-text {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
         .blog {
             text-align: center;
             margin: 60px 20px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         }
         .blog h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
         .blog-post {
@@ -163,28 +192,119 @@
             font-size: 1rem;
             color: #ccc;
         }
-        footer {
+        .support {
             text-align: center;
-            margin: 60px 0 20px;
-            padding: 20px;
+            margin: 60px 20px;
+            padding: 40px 20px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             border-radius: 15px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         }
-        footer a {
+        .support h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .support a {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            background: #1e90ff;
             color: white;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2rem;
-            transition: color 0.3s;
+            border-radius: 8px;
+            transition: background 0.3s;
         }
-        footer a:hover {
+        .support a:hover {
+            background: #0073e6;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+        }
+        .modal-content button {
+            background: #1e90ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .modal-content button:hover {
+            background: #0073e6;
+        }
+        .modal-content .auth-provider {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+            transition: background 0.3s;
+        }
+        .modal-content .auth-provider:hover {
+            background: #f1f1f1;
+        }
+        .modal-content .auth-provider i {
+            font-size: 1.2rem;
+        }
+        .modal-content .switch-mode {
+            margin-top: 10px;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .modal-content .switch-mode:hover {
             color: #1e90ff;
+        }
+        @keyframes gradient-text {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Particles Container -->
+<div id="particles-js"></div>
     <!-- Floating Navbar -->
     <nav class="navbar">
         <h1>Atomvilla</h1>
@@ -193,7 +313,13 @@
             <li><a href="#about">About</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#support">Support</a></li>
+            <li><a href="https://avsrv.craftingstore.net" target="_blank">Store</a></li>
         </ul>
+        <div id="userProfile" class="user-profile hidden">
+            <div id="profileImage" class="initials">U</div>
+            <span id="profileName">User</span>
+        </div>
+        <button id="authBtn" class="auth-btn" onclick="openModal('login')">Sign In / Register</button>
     </nav>
     
     <!-- Hero Section -->
@@ -237,19 +363,132 @@
         </div>
     </section>
     
-    <!-- Links Section -->
-    <footer>
-        <a href="https://discord.gg/zrcdyQyZS9" target="_blank" aria-label="Join our Discord">
-            <i class="fab fa-discord"></i> Discord
+    <!-- Support Section -->
+    <section class="support" id="support">
+        <h2>Support</h2>
+        <a href="mailto:anythingarjuns@gmail.com" target="_blank">
+            <i class="fas fa-envelope"></i> Email Us
         </a>
-        <a href="https://avsrv.craftingstore.net" target="_blank" aria-label="Visit our Store">
-            <i class="fas fa-store"></i> Store
+        <a href="https://discord.gg/zrcdyQyZS9" target="_blank">
+            <i class="fab fa-discord"></i> Join Discord
         </a>
-    </footer>
+    </section>
     
+    <!-- Login/Register Modal -->
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <h2 id="modalTitle">Sign In</h2>
+        <div id="loginFields">
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+        </div>
+        <div id="registerFields" class="hidden">
+            <input type="text" id="registerUsername" placeholder="Username">
+            <input type="text" id="registerDisplayName" placeholder="Display Name (Minecraft Gamertag)">
+            <input type="email" id="registerEmail" placeholder="Email">
+            <input type="password" id="registerPassword" placeholder="Password">
+            <input type="password" id="registerConfirmPassword" placeholder="Confirm Password">
+        </div>
+        <button id="authActionBtn">Sign In</button>
+        <p class="switch-mode" onclick="switchAuthMode()" id="switchModeText">Don't have an account? Register here.</p>
+        
+        <!-- Continue with Google/Discord -->
+        <div class="auth-providers">
+            <p>Or continue with:</p>
+            <div class="auth-links">
+                <a href="https://accounts.google.com" target="_blank" class="auth-link google">Google</a>
+                <a href="https://discord.com/oauth2/authorize" target="_blank" class="auth-link discord">Discord</a>
+            </div>
+        </div>
+    </div>
+</div>
     <script>
+        // Modal functionality
+        const modal = document.getElementById("authModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const authActionBtn = document.getElementById("authActionBtn");
+        const loginFields = document.getElementById("loginFields");
+        const registerFields = document.getElementById("registerFields");
+        const switchModeText = document.getElementById("switchModeText");
+        const userProfile = document.getElementById("userProfile");
+        const profileImage = document.getElementById("profileImage");
+        const profileName = document.getElementById("profileName");
+        const authBtn = document.getElementById("authBtn");
+        let isLoginMode = true;
+
+        function openModal(mode) {
+            isLoginMode = mode === 'login';
+            modalTitle.textContent = isLoginMode ? "Sign In" : "Register";
+            authActionBtn.textContent = isLoginMode ? "Sign In" : "Register";
+            loginFields.classList.toggle("hidden", !isLoginMode);
+            registerFields.classList.toggle("hidden", isLoginMode);
+            switchModeText.textContent = isLoginMode ? "Don't have an account? Register here." : "Already have an account? Sign in here.";
+            modal.style.display = "flex";
+        }
+
+        function switchAuthMode() {
+            isLoginMode = !isLoginMode;
+            modalTitle.textContent = isLoginMode ? "Sign In" : "Register";
+            authActionBtn.textContent = isLoginMode ? "Sign In" : "Register";
+            loginFields.classList.toggle("hidden", !isLoginMode);
+            registerFields.classList.toggle("hidden", isLoginMode);
+            switchModeText.textContent = isLoginMode ? "Don't have an account? Register here." : "Already have an account? Sign in here.";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+                       if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Auth action
+        authActionBtn.onclick = function() {
+            if (isLoginMode) {
+                const email = document.getElementById("loginEmail").value;
+                const password = document.getElementById("loginPassword").value;
+                if (email && password) {
+                    alert(`Signing in with email: ${email}`);
+                    // Simulate login success
+                    userProfile.classList.remove("hidden");
+                    profileName.textContent = email.split("@")[0]; // Display email username
+                    profileImage.textContent = email[0].toUpperCase(); // Display first letter
+                    authBtn.classList.add("hidden"); // Hide the Sign In / Register button
+                    closeModal();
+                } else {
+                    alert("Please fill in all fields.");
+                }
+            } else {
+                const username = document.getElementById("registerUsername").value;
+                const displayName = document.getElementById("registerDisplayName").value;
+                const email = document.getElementById("registerEmail").value;
+                const password = document.getElementById("registerPassword").value;
+                const confirmPassword = document.getElementById("registerConfirmPassword").value;
+                if (username && displayName && email && password && confirmPassword) {
+                    if (password === confirmPassword) {
+                        alert(`Registering with username: ${username}, display name: ${displayName}, email: ${email}`);
+                        // Simulate registration success
+                        userProfile.classList.remove("hidden");
+                        profileName.textContent = displayName; // Display Minecraft Gamertag
+                        profileImage.textContent = displayName[0].toUpperCase(); // Display first letter of display name
+                        authBtn.classList.add("hidden"); // Hide the Sign In / Register button
+                        closeModal();
+                    } else {
+                        alert("Passwords do not match.");
+                    }
+                } else {
+                    alert("Please fill in all fields.");
+                }
+            }
+        };
+
+        // Copy IP function
         function copyIP() {
-            navigator.clipboard.writeText("avsrv.mc-world.xyz")
+            navigator.clipboard.writeText("atomct.aternos.me:42123")
                 .then(() => {
                     document.getElementById("copyMessage").classList.remove("hidden");
                     setTimeout(() => {
@@ -260,8 +499,9 @@
                     alert("Failed to copy IP address. Please copy it manually.");
                 });
         }
-        
-        fetch("https://api.mcsrvstat.us/2/avsrv.mc-world.xyz")
+
+        // Fetch player count
+        fetch("https://api.mcsrvstat.us/2/atomct.aternos.me:42123")
             .then(res => res.json())
             .then(data => {
                 document.getElementById("playerCount").textContent = data?.players?.online ?? 0;
